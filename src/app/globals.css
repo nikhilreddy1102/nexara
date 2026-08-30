@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body { background-color: #F8FAFC; }
+
+  /* No override existed anywhere for this, so tapping any link or button
+     showed the browser's raw default tap-highlight -- a gray/blue flash
+     that doesn't account for what's underneath (a dark button, a colored
+     pill, etc). Keyboard focus is handled separately below via
+     :focus-visible, so this doesn't remove focus indication -- it only
+     removes the mismatched color flash on click/tap. */
+  html { -webkit-tap-highlight-color: transparent; }
+  a, button { outline: none; }
+  a:focus-visible, button:focus-visible {
+    @apply ring-2 ring-brand ring-offset-2 rounded-sm;
+  }
+}
+
+@layer components {
+  .badge-fulltime  { @apply bg-purple-100 text-purple-900 text-xs px-2 py-0.5 rounded-full font-medium; }
+  .badge-c2c       { @apply bg-green-100 text-green-900 text-xs px-2 py-0.5 rounded-full font-medium; }
+  .badge-custom    { @apply bg-amber-100 text-amber-900 text-xs px-2 py-0.5 rounded-full font-medium; }
+  .badge-active    { @apply bg-green-100 text-green-900 text-xs px-2 py-0.5 rounded-full; }
+  .badge-running   { @apply bg-green-100 text-green-900 text-xs px-2 py-0.5 rounded-full; }
+  .badge-paused    { @apply bg-gray-100 text-gray-700 text-xs px-2 py-0.5 rounded-full; }
+  .badge-draft     { @apply bg-blue-100 text-blue-900 text-xs px-2 py-0.5 rounded-full; }
+  .badge-completed { @apply bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full; }
+  .badge-high      { @apply bg-red-100 text-red-900 text-xs px-2 py-0.5 rounded-full; }
+  .badge-medium    { @apply bg-amber-100 text-amber-900 text-xs px-2 py-0.5 rounded-full; }
+  .badge-low       { @apply bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full; }
+  .badge-replied   { @apply bg-green-100 text-green-900 text-xs px-2 py-0.5 rounded-full; }
+  .badge-accepted  { @apply bg-green-100 text-green-900 text-xs px-2 py-0.5 rounded-full; }
+  .badge-sent      { @apply bg-blue-100 text-blue-900 text-xs px-2 py-0.5 rounded-full; }
+  .badge-pending   { @apply bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full; }
+  .badge-skipped   { @apply bg-gray-100 text-gray-500 text-xs px-2 py-0.5 rounded-full; }
+
+  .btn-primary  { @apply bg-brand text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-darker transition-colors cursor-pointer; }
+  .btn-secondary { @apply bg-transparent border border-gray-200 text-gray-600 px-4 py-2 rounded-lg text-sm hover:bg-gray-50 transition-colors cursor-pointer; }
+  .btn-danger   { @apply bg-red-50 text-red-700 border border-red-200 px-4 py-2 rounded-lg text-sm hover:bg-red-100 transition-colors cursor-pointer; }
+
+  .card  { @apply bg-white border border-gray-200 rounded-xl p-4; }
+  .input { @apply w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-colors; }
+
+  .progress-bg  { @apply bg-gray-100 rounded-full h-1.5 overflow-hidden; }
+  .progress-bar { @apply bg-brand h-full rounded-full transition-all; }
+}
